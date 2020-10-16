@@ -13,7 +13,8 @@ export default class TodoApp extends Component {
                {text: "item #3" , done: false , key: new Date().getMilliseconds()+ Math.random()},
                {text: "item #4" , done: false , key: new Date().getMilliseconds() + Math.random()}
             ] ,
-            date: new Date()    
+            date: new Date(),
+            input : ''    
         };
         //console.log(this.state);
     }
@@ -30,10 +31,17 @@ export default class TodoApp extends Component {
     }
 
     add = () => {
-         
+            console.log(this.state.input); 
+          let newItem = {text: this.state.input, done: false ,
+                         key: new Date().getMilliseconds() + Math.random() }
+         this.setState((state) => ({
+                 items: state.items.concat(newItem)
+         }));
     }
 
-  
+    handleChange = (e) => {
+         this.setState({input:e.target.value});
+    }  
 
     render() {
         return (
@@ -41,9 +49,13 @@ export default class TodoApp extends Component {
                 <div className="row">
                      <div className="col-md-6">
                          List Undone
-                        <form>
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="add Todo"/>
+                        <form onSubmit={(e) => {e.preventDefault(); this.add();} }>
+                            <div className="input-group">
+                                <input type="text" value={this.state.value}
+                                onChange={(e) => {
+                                    this.handleChange(e)
+                                }} 
+                                className="form-control" placeholder="add Todo"/>
                             </div>
                         </form>
                          
