@@ -1,3 +1,5 @@
+/* eslint-disable no-self-compare */
+/* eslint-disable eqeqeq */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
@@ -57,6 +59,13 @@ export default class TodoApp extends Component {
         return undonne.length;
     }
 
+    delet = (item) => {
+        let filtered = this.state.items.filter(item1 => {
+            return item1 != item;
+        });
+        this.setState({items: filtered});
+    }
+
    componentDidMount(){
         this.setState({date: new Date()});
    }  
@@ -78,18 +87,18 @@ export default class TodoApp extends Component {
                             </div>
                         </form>
                          
-                         <ul>
+                         <ul id="no-padding">
                          {
                             this.state.items.map(item => {
                                  if (!item.done) {
-                                    return  (<li onClick={() => this.move(item.key)} key={item.key}>
+                                    return  (<li className="list-unstyled" onClick={() => this.move(item.key)} key={item.key}>
                                           {item.text}
                                      </li>); 
                                  }
                              })
                          }
                          </ul>
-                         <div className="todo-footer"> 
+                         <div className="todo-footer list-unstyled"> 
                          <span>{this.getUndone()}</span>Items left 
                          </div>
                          </div>
@@ -97,13 +106,13 @@ export default class TodoApp extends Component {
                      <div className="col-md-6">
                      <div className="todolist">
                          List done <h2>Il est {this.state.date.toLocaleTimeString() }.</h2>
-                         <ul>
+                         <ul id="done-items">
                          {
                             this.state.items.map(item => {
                                  if (item.done) {
-                                    return  (<li  key={item.key}>
-                                          {item.text} 
-                                          <button onClick={() => this.move(item.key)} className="btn btn-danger">
+                                    return  (<li  key={item.key} className="list-unstyled">
+                                          <label onClick={() => this.move(item.key)}>{item.text}</label>
+                                          <button onClick={(e) => this.delet(item) }  className="float-right btn btn-danger">
                                               <i className="fas fa-trash" ></i> 
                                           </button>
                                      </li>); 

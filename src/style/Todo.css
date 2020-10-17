@@ -27,10 +27,16 @@ body {
     margin: 0 -20px -10px -20px;
 }
 
+
 #done-items li {
     padding: 10px 0;
+   
     border-bottom: 1px solid #ddd;
     text-decoration: line-through;
+}
+
+.li-space {
+    margin-right: 10px;
 }
 
 #done-items li:last-child {
