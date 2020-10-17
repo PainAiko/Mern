@@ -1,0 +1,47 @@
+body {
+    background-color: #EEEEEE;
+}
+.todolist {
+    background-color: #FFF;
+    padding: 20px 20px 10px 20px;
+    margin-top: 30px;
+    border-radius: 6px;
+}
+.form-footer {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+.form-control {
+    border-radius: 0px;
+}
+.li.ui-state-default {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+.li.ui-state-default:last-child {
+    border-bottom: none;
+}
+.todo-footer {
+    background-color: #F4FCE8;
+    margin: 0 -20px -10px -20px;
+}
+
+#done-items li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    text-decoration: line-through;
+}
+
+#done-items li:last-child {
+    border-bottom: none;
+}
+#checkAll {
+    margin-top: 10px;
+}
+#no-padding {
+    padding-left: 0;
+}
+#paddingZero {
+    padding: 0;
+}
