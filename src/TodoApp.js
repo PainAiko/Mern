@@ -101,8 +101,11 @@ export default class TodoApp extends Component {
                          {
                             this.state.items.map(item => {
                                  if (item.done) {
-                                    return  (<li onClick={() => this.move(item.key)} key={item.key}>
-                                          {item.text}
+                                    return  (<li  key={item.key}>
+                                          {item.text} 
+                                          <button onClick={() => this.move(item.key)} className="btn btn-danger">
+                                              <i className="fas fa-trash" ></i> 
+                                          </button>
                                      </li>); 
                                  }
                              })
